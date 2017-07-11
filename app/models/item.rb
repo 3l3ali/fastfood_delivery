@@ -1,4 +1,8 @@
 class Item < ApplicationRecord
+  validates :name , presence: true
+  validates :price , presence: true
+  validates :category , presence: true
+
   enum category: {
     burgers: 0,
     chicken_sandwiches: 1,
