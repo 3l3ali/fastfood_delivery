@@ -6,4 +6,12 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+
+  enum role: {
+    manager: 0,
+    employee: 1,
+    delivery_guy: 2,
+    customer: 3
+  }
 end
