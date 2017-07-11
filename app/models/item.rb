@@ -11,4 +11,8 @@ class Item < ApplicationRecord
     drinks: 4,
     shakes: 5
   }
+
+  def self.items_for_select
+    categories.to_a.unshift(["all",""])
+  end
 end
