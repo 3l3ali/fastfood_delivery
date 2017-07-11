@@ -4,4 +4,10 @@ class Order < ApplicationRecord
 
   has_many :itemsOrders
   has_many :items, through: :itemsOrders
+
+  enum status: {
+    being_prepared: 0,
+    done: 1,
+    out_for_delivery: 2
+  }
 end
