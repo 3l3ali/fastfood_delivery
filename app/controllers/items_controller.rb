@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:category].present?
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.update(item_params)
+    @item.update(item_params)
     redirect_to root_path
   end
 
