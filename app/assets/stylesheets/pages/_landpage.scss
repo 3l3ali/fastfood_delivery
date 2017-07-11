@@ -1,0 +1,16 @@
+.banner {
+  width:100%;
+  height: 100vh;
+  background-image: image-url("burgerbanner.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.banner-content{
+  font-family: sans-serif;
+  margin: 0 auto;
+  width:400px;
+  padding-top:650px;
+  text-align: center;
+  color: #DF000C;
+}
