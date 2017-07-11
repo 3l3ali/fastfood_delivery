@@ -1,7 +1,12 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index]
   def index
-    @orders = current_user.orders
+    if @user == current_user
+      @orders = current_user.orders
+    else
+      redirect_to current_user
+    end
   end
 
   def show
@@ -39,6 +44,10 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = current_user.orders.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
   def order_params
