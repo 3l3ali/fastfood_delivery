@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  get "/home", to: "pages#home"
   root to: 'pages#landing'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -12,5 +13,5 @@ Rails.application.routes.draw do
   end
 
   resources :items
-
+  resources :locations, only: [:index]
 end
