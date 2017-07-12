@@ -9,6 +9,12 @@ class OrdersController < ApplicationController
     end
   end
 
+  def add_cart
+    session[:items_ids] ||= []
+    session[:items_ids]<< params[:item_id]
+    redirect_to new_user_order_path(current_user)
+  end
+
   def show
   end
 
@@ -18,8 +24,11 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new(order_params)
-
+    # @order.status = "done"
+    session[:items_ids].each { |item| @order.items << Item.find(item) }
+    # @order.bill = @order.items.map(&:price).inject(&:+)
     if @order.save
+      session[:items_ids] = nil
       redirect_to root_path
     else
       render :new
@@ -51,6 +60,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:notes, :status, :bill)
+    params.require(:order).permit(:notes, :status, :bill, :address_id)
   end
 end
