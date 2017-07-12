@@ -10,13 +10,14 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
+<!--<div class="nav navbar-default">
+      <#% if current_user.present? %>
+        <#%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        <#%= image_tag avatar_url(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <#% end %>
+    </div>-->
+    <%= render "shared/navbar" %>
 
-    <div class="nav navbar-default">
-      <% if current_user.present? %>
-        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-        <%= image_tag avatar_url(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-      <% end %>
-    </div>
 
     <!-- <p class="notice"><#%= notice %></p> -->
     <!-- <p class="alert"><#%= alert %></p> -->
