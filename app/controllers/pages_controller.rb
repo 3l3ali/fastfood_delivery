@@ -13,4 +13,8 @@ class PagesController < ApplicationController
 
   def landing
   end
+
+  def menu
+    @items = Item.all
+  end
 end
