@@ -15,5 +15,6 @@ class PagesController < ApplicationController
   end
 
   def menu
+    @items = Item.all
   end
 end
