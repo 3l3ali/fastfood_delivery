@@ -31,7 +31,7 @@ class PagesController < ApplicationController
 
     @number = Order.where("created_at >= ? AND created_at <= ?", Date.today.to_datetime , Date.tomorrow.to_datetime - 1.second  ).count
 
-    @total = Order.where("created_at >= ? AND created_at <= ?", Date.today.to_datetime , Date.tomorrow.to_datetime - 1.second  ).map(&:bill).inject(&:+).to_i
+    @total = Order.where("created_at >= ? AND created_at <= ?", Date.today.to_datetime , Date.tomorrow.to_datetime - 1.second  ).pluck(:bill).inject(&:+).to_i
   end
 end
 
