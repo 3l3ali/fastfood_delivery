@@ -67,12 +67,18 @@
           </div>
 
           <div class="item_price_list">
-            <%= link_to "Payment", new_user_order_path(current_user) %>
-            <img class="Payment" src="images/xxxx.jpeg">
-            <a class="card-link" href="#" ></a>
+            <% @items_list.each do |item| %>
+              <%= item.first %>: <%= item[1][:count] %><br>
+            <% end %>
+            <%= link_to new_user_order_path(current_user) , class:"card-link" do %>
+              <%= image_tag "images/xxxx.jpeg", class: "Payment" %>
+            <% end %>
+            <h3>Total: </h3> <%= @bill %>
           </div>
       </div>
     </div>
 
 </div>
+
+
 

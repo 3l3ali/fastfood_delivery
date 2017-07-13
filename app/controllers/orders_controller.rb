@@ -16,6 +16,12 @@ class OrdersController < ApplicationController
     redirect_to menu_pages_path(category: params[:category])
   end
 
+  # def remove_cart
+  #   unless session[:items_ids].empty?
+  #     if session[]
+  #   end
+  # end
+
   def show
   end
 
