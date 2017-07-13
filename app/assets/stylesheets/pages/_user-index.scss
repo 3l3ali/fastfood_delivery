@@ -4,6 +4,15 @@
   .user-table th{
     padding:20px;
   }
-i{
-  text-align: center;
+.manager-dropdown {
+  margin:10px 0;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 100%;
+}
+
+td i {
+    text-align:center;
 }
