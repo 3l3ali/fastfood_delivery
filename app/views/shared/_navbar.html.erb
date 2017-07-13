@@ -1,0 +1,68 @@
+<div class="navbar-wagon">
+
+  <!-- Logo -->
+
+  <%= link_to home_pages_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+
+    <!-- Text link -->
+    <%= link_to "Menu", menu_pages_path  ,class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <!-- Text link -->
+
+
+    <!-- Profile picture and dropdown -->
+
+    <% if current_user.present? %>
+      <%= link_to "Dashboard", dashboard_pages_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.manager? %>
+      <%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" unless current_user.manager? %>
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <%= image_tag avatar_url(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to "Profile", edit_user_path(current_user) %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path ,class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Sign up", new_user_registration_path ,class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <% end %>
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <% if current_user.present? %>
+          <li>
+            <%= link_to edit_user_path(current_user) do %>
+               <%= "Profile" %><%= image_tag avatar_url(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" , style: "margin-left: 25px;"%>
+            <% end %>
+          </li>
+          <li><%= link_to "Menu", menu_pages_path  ,class: "navbar-wagon-item navbar-wagon-link" %></li>
+
+          <li><%= link_to "Dashboard", dashboard_pages_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.manager? %></li>
+
+          <% unless current_user.manager? %>
+            <li><%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <% end %>
+
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Menu", menu_pages_path  ,class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "Sign in", new_user_session_path ,class: "navbar-wagon-item navbar-wagon-link"%></li>
+          <li><%= link_to "Sign up", new_user_registration_path ,class: "navbar-wagon-item navbar-wagon-link"%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

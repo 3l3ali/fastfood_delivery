@@ -1,23 +1,88 @@
-<!-- <div class="banner">
 
-</div> -->
+<div class="container-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <div class="home">
+          <%= image_tag "bbq-burger.jpg" %>
+        </div>
+      </div>
+      <div class="hidden-xs hidden-sm col-md-12">
+        <div class="links">
+          <div class="col-md-2">
+              <%= link_to menu_pages_path(category: "burgers") do %>
+                <%= image_tag "burger.jpg" %>
+              <% end %>
+          </div>
+          <div class="col-md-2">
+              <%= link_to menu_pages_path(category: "chicken_sandwiches") do %>
+                <%= image_tag "chicken.jpg" %>
+              <% end %>
+          </div>
+          <div class="col-md-2">
+            <%=  link_to menu_pages_path(category: "sides") do %>
+              <%= image_tag "sides.jpg" %>
+            <% end %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to menu_pages_path(category: "drinks") do %>
+              <%= image_tag "drinks.jpg" %>
+            <% end %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to menu_pages_path(category: "shakes") do %>
+              <%= image_tag "shakes.jpg" %>
+            <% end %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to "SPECIALS"  do %>
+              <%= image_tag "shakes.jpg" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class=" col-xs-12 hidden-md hidden-lg hidden-xl">
+        <ul class="list-home-page">
+          <%= link_to menu_pages_path(category: "burgers") do %>
+            <li>Burger</li>
+          <% end %>
+          <%= link_to menu_pages_path(category: "chicken_sandwiches") do %>
+            <li>Chicken</li>
+          <% end %>
+          <%= link_to menu_pages_path(category: "sides") do %>
+            <li>Sides</li>
+          <% end %>
+          <%= link_to menu_pages_path(category: "drinks") do %>
+            <li>Drinks</li>
+          <% end %>
+          <%= link_to menu_pages_path(category: "shakes") do  %>
+            <li>Shakes</li>
 
-<div id="map" style="width: 100%; height: 300px;"></div>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
-<% end %>
+          <% end %>
+          <%= link_to "SPECIALS"  do %>
+           <li>Specials</li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="map" style="width: 100%;">
+      </div>
+        <% content_for(:after_js) do %>
+          <%= javascript_tag do %>
+            $(document).ready(function() {
+              var handler = Gmaps.build('Google');
+              handler.buildMap({ internal: { id: 'map' } }, function() {
+                markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                if (markers.length == 0) {
+                  handler.getMap().setZoom(2);
+                } else if (markers.length == 1) {
+                  handler.getMap().setZoom(14);
+                }
+              });
+            });
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

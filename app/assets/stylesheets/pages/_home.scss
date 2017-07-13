@@ -2,3 +2,45 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+.links {
+  margin-top:20px;
+  margin-bottom:20px;
+}
+.links img {
+      width: 100%;
+}
+.home {
+  margin-top: 20px;
+}
+.home img{
+  width:100%;
+
+}
+.list-home-page{
+  list-style: none;
+  padding:0;
+  a{
+    text-decoration: none;
+  }
+  li{
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    color: white;
+    padding:10px;
+    text-align: center;
+
+  }
+}
+
+
+#map {
+  top: 20px;
+  left:0px;
+  height:400px;
+
+}
+
+.container-body{
+  background-color: #77000D;
+}
