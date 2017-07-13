@@ -1,4 +1,107 @@
-<% @items.each do |item| %>
-  <%= item.name %>
-  <!-- MENU PAGE  -->
-<% end %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12 col-md-2">
+      <ul id="list-home-page">
+        <li>
+          <%= link_to menu_pages_path(category: "burgers"), method: :get do %>
+            <%= image_tag "burger.jpg" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to menu_pages_path(category: "chicken_sandwiches") do %>
+            <%= image_tag "chicken.jpg" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to menu_pages_path(category: "sides") do %>
+            <%= image_tag "sides.jpg" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to menu_pages_path(category: "drinks") do %>
+            <%= image_tag "drinks.jpg" %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to menu_pages_path(category: "shakes") do %>
+            <%= image_tag "shakes.jpg" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-xs-12 col-md-7">
+      <div class="burgers">
+
+        <div class="col-md-6">
+          <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
+            <div class="card-description">
+              <h3>Cheese Bacen burger</h3>
+            </div>
+            <div class="card-price">
+            <h2>¥650</h2>
+            <img class="cart" src="images/xxxx.jpeg">
+            <a class="card-link" href="#" ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
+            <div class="card-description">
+              <h3>Double Cheese Burger</h3>
+            </div>
+            <div class="card-price">
+            <h2>¥650</h2>
+            <img class="cart" src="images/xxxx.jpeg">
+            <a class="card-link" href="#" ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
+            <div class="card-description">
+              <h3>Chicken Burger</h3>
+            </div>
+            <div class="card-price">
+            <h2>¥650</h2>
+            <img class="cart" src="images/xxxx.jpeg">
+            <a class="card-link" href="#" ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
+            <div class="card-description">
+              <h3>200g beef burger</h3>
+            </div>
+            <div class="card-price">
+              <h2>¥650</h2>
+              <img class="cart" src="images/xxxx.jpeg">
+              <a class="card-link" href="#" ></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-3">
+      <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
+            <div class="card-description">
+              <h3>Ordering List</h3>
+            </div>
+
+            <div class="item_price_list">
+              <img class="Payment" src="images/xxxx.jpeg">
+              <a class="card-link" href="#" ></a>
+            </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
