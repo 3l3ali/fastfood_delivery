@@ -37,4 +37,18 @@ class PagesController < ApplicationController
     @bill = @items_list.values.map{|item| item[:price] * item[:count] }.inject(:+)
 
   end
+
+  def dashboard
+    redirect_to root_path unless current_user.manager?
+  end
+
+  def statistics
+    redirect_to root_path unless current_user.manager?
+
+    @number = Order.where("created_at >= ? AND created_at <= ?", Date.today.to_datetime , Date.tomorrow.to_datetime - 1.second  ).count
+
+    @total = Order.where("created_at >= ? AND created_at <= ?", Date.today.to_datetime , Date.tomorrow.to_datetime - 1.second  ).pluck(:bill).inject(&:+).to_i
+  end
 end
+
+
