@@ -21,4 +21,8 @@ class PagesController < ApplicationController
       @items = Item.all
     end
   end
+
+  def dashboard
+    redirect_to root_path unless current_user.manager?
+  end
 end
