@@ -10,14 +10,24 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
+<!--<div class="nav navbar-default">
+      <#% if current_user.present? %>
+        <#%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        <#%= image_tag avatar_url(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <#% end %>
+    </div>-->
+    <%= render "shared/navbar" %>
 
-    <!--     <div class="nav navbar-default">
-      <#%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-    </div> -->
 
     <!-- <p class="notice"><#%= notice %></p> -->
     <!-- <p class="alert"><#%= alert %></p> -->
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
+      <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+      <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
+      <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+
+      <%= javascript_include_tag "application" %>
+
+      <%= yield(:after_js) %>
   </body>
 </html>
