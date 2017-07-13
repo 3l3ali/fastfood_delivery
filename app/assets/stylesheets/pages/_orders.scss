@@ -1,0 +1,54 @@
+body.pages.orders {
+
+  .card
+   {
+    height: 250px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    background-size: cover !important;
+    color: white;
+    position: relative;
+    border-radius: 5px;
+    margin:20px;
+    display:flex;
+
+  }
+  // .card-user {
+  //   position: absolute;
+  //   right: 10px;
+  //   top: 10px;
+  // }
+  // .card-category {
+  //   position: absolute;
+  //   top: 10px;
+  //   left: 10px;
+  //   font-size: 25px;
+  // }
+  .card-description {
+    display:flex;
+    align-items:center;
+    margin:0 auto;
+
+  }
+
+  .card-description {
+    h2{
+    font-size: 60px;
+    color: white;
+    }
+
+  }
+
+  .card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index:2;
+    background: black;
+    opacity: 0;
+  }
+  .card-link:hover{
+    opacity: 0.1;
+  }
+}
+
