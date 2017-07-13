@@ -53,6 +53,7 @@
             <%= link_to cart_path(item_id: item.id, category: params[:category]), method: :post do %>
               <%= image_tag "images/xxxx.jpeg", class: "cart" %>
             <% end %>
+            <%#= link_to "remove", remove_item_path(item_id: item.id, category: params[:category]), method: :post %>
             <!-- <a class="card-link" href="#" ></a> -->
           </div>
             <% end %>
@@ -68,11 +69,12 @@
 
           <div class="item_price_list">
             <% @items_list.each do |item| %>
-              <%= item.first %>: <%= item[1][:count] %><br>
+              <%= item.first %>: <%= item[1][:count] %> <%= link_to "remove", remove_item_path(item_id: item[1][:id], category: params[:category]), method: :post %><br>
             <% end %>
             <%= link_to new_user_order_path(current_user) , class:"card-link" do %>
               <%= image_tag "images/xxxx.jpeg", class: "Payment" %>
             <% end %>
+            <%= link_to "Clear cart", clear_cart_path(category: params[:category]), method: :put  %>
             <h3>Total: </h3> <%= @bill %>
           </div>
       </div>
