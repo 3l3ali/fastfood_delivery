@@ -12,7 +12,8 @@ class OrdersController < ApplicationController
   def add_cart
     session[:items_ids] ||= []
     session[:items_ids]<< params[:item_id]
-    redirect_to new_user_order_path(current_user)
+    # redirect_to new_user_order_path(current_user)
+    redirect_to menu_pages_path
   end
 
   def show
@@ -29,7 +30,7 @@ class OrdersController < ApplicationController
     # @order.bill = @order.items.map(&:price).inject(&:+)
     if @order.save
       session[:items_ids] = nil
-      redirect_to root_path
+      redirect_to user_orders_path(current_user)
     else
       render :new
     end
