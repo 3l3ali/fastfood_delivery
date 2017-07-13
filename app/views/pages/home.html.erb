@@ -3,27 +3,27 @@
     <div class="col-xs-12 col-md-3">
       <ul id="list-home-page">
         <li>
-          <%= link_to "BURGER" do %>
+          <%= link_to menu_pages_path(category: "burgers"), method: :get do %>
             <%= image_tag "burger.jpg" %>
           <% end %>
         </li>
         <li>
-          <%= link_to "CHICKEN"  do %>
+          <%= link_to menu_pages_path(category: "chicken_sandwiches") do %>
             <%= image_tag "chicken.jpg" %>
           <% end %>
         </li>
         <li>
-          <%= link_to "SIDES"  do %>
+          <%= link_to menu_pages_path(category: "sides") do %>
             <%= image_tag "sides.jpg" %>
           <% end %>
         </li>
         <li>
-          <%= link_to "DRINKS"  do %>
+          <%= link_to menu_pages_path(category: "drinks") do %>
             <%= image_tag "drinks.jpg" %>
           <% end %>
         </li>
         <li>
-          <%= link_to "SHAKES"  do %>
+          <%= link_to menu_pages_path(category: "shakes") do %>
             <%= image_tag "shakes.jpg" %>
           <% end %>
         </li>
