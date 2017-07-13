@@ -32,11 +32,12 @@
         </div>
       </div>
     <% else %>
-      <%= link_to "Sign in", new_user_session_path ,class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Sign in", new_user_session_path ,class: "navbar-wagon-item navbar-wagon-link"%>
+      <%= link_to "Sign up", new_user_registration_path ,class: "navbar-wagon-item navbar-wagon-link"%>
     <% end %>
 
     <!-- Button (call-to-action) -->
-<!--     <a href="" class="navbar-wagon-item navbar-wagon-button btn">Post stuff</a> -->
+    <!--     <%#= link_to "Add Order", class: "navbar-wagon-item navbar-wagon-button btn" , menu_pages_path %> -->
   </div>
 
   <!-- Dropdown appearing on mobile only -->
@@ -44,9 +45,15 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <% if current_user.present? %>
+          <li><%= link_to "Menu", menu_pages_path  ,class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "My Profile", "#" %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign in", new_user_session_path ,class: "navbar-wagon-item navbar-wagon-link"%></li>
+          <li><%= link_to "Sign up", new_user_registration_path ,class: "navbar-wagon-item navbar-wagon-link"%></li>
+        <% end %>
       </ul>
     </div>
   </div>
