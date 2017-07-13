@@ -2,10 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :destroy, :edit]
 
   def index         # GET /users
-    if params[:role].present?
-      @users = User.where(role: params[:role])
+    if current_user.manager?
+      if params[:role].present?
+        @users = User.where(role: params[:role])
+      else
+        @users = User.all
+      end
     else
-      @users = User.all
+      redirect_to root_path
     end
   end
 
@@ -13,24 +17,12 @@ class UsersController < ApplicationController
   end
 
   def new           # GET /users/new
+    redirect_to root_path if !current_user.manager?
     @user = User.new
   end
 
-  def create        # POST /users
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to root_path
-    else
-      render 'new'
-    end
-  end
 
   def edit          # GET /users/:id/edit
-  end
-
-  def update        # PATCH /users/:id
-    @user.update(user_params)
-    redirect_to root_path
   end
 
   def destroy       # DELETE /users/:id

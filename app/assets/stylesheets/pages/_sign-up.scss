@@ -1,0 +1,57 @@
+.bg {
+  width:100%;
+  height: 100vh;
+  background-image: image-url("bbq-burger.jpg");
+  background-size: cover;
+  background-position: center;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+  position: absolute;
+
+}
+
+.container-body-new-user{
+  position:relative;
+  background:rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  padding-top: 30px;
+  color:#fff;
+
+}
+.help-block {
+  color:white;
+}
+.line{
+  margin-top:13px;
+  display: block;
+  top: 10px;
+  float: left;
+  width: 43%;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+}
+.or {
+  font-family: "Gotham_SSm_4r",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 20px;
+  display: block;
+  float: left;
+  width: 14%;
+  color: #fff;
+  text-align: center;
+}
+.line-or {
+  padding-bottom: 0px;
+  overflow: hidden;
+  margin-top:20px;
+
+}
+
+.log-in-signup{
+  float:left;
+  margin-right:100px;
+  margin-top:20px;
+}
