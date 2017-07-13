@@ -1,6 +1,6 @@
 <% if current_user.manager? %>
-<%= render 'form_role' %>
-<% @users.each do |user| %>
-  <%= link_to "#{user.first_name} #{user.last_name}" , user_path(user) %>
-<% end %>
+  <%= render 'form_role' %>
+  <% @users.each do |user| %>
+    <%= link_to "#{user.first_name} #{user.last_name}" , user_path(user) %>
+  <% end %>
 <% end %>
