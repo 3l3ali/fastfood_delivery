@@ -13,7 +13,11 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    if current_user.manager?
+      @item = Item.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -27,6 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless current_user.manager?
   end
 
   def update
