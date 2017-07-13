@@ -25,4 +25,14 @@ class PagesController < ApplicationController
   def dashboard
     redirect_to root_path unless current_user.manager?
   end
+
+  def statistics
+    redirect_to root_path unless current_user.manager?
+
+    @number = Order.where("created_at >= ? AND created_at <= ?", Date.today.to_datetime , Date.tomorrow.to_datetime - 1.second  ).count
+
+    @total = Order.where("created_at >= ? AND created_at <= ?", Date.today.to_datetime , Date.tomorrow.to_datetime - 1.second  ).map(&:bill).inject(&:+).to_i
+  end
 end
+
+
