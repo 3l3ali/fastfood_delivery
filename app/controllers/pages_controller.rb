@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [:home, :menu]
 
   def home
     @locations = Location.where.not(latitude: nil, longitude: nil)
@@ -15,6 +15,10 @@ class PagesController < ApplicationController
   end
 
   def menu
-    @items = Item.all
+    if params[:category].present?
+      @items = Item.where(category: params[:category])
+    else
+      @items = Item.all
+    end
   end
 end
