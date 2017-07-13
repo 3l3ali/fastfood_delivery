@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     session[:items_ids] ||= []
     session[:items_ids]<< params[:item_id]
     # redirect_to new_user_order_path(current_user)
-    redirect_to menu_pages_path
+    redirect_to menu_pages_path(category: params[:category])
   end
 
   def show
