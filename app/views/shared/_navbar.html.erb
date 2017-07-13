@@ -20,13 +20,13 @@
     <!-- Profile picture and dropdown -->
 
     <% if current_user.present? %>
-      <%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Dashboard", dashboard_pages_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.manager? %>
+      <%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" unless current_user.manager? %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag avatar_url(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li><a href="#">Profile</a></li>
-            <!-- <li><a href="#">Dashboard</a></li> -->
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
@@ -47,7 +47,8 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <% if current_user.present? %>
           <li><%= link_to "Menu", menu_pages_path  ,class: "navbar-wagon-item navbar-wagon-link" %></li>
-          <li><%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "Dashboard", dashboard_pages_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.manager? %></li>
+          <li><%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" unless current_user.manager? %></li>
           <li><%= link_to "My Profile", "#" %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
