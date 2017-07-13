@@ -33,7 +33,6 @@ class PagesController < ApplicationController
     end if session[:items_ids].present?
 
 
-    # self.bill = self.items.map(&:price).inject(&:+)
     @bill = @items_list.values.map{|item| item[:price] * item[:count] }.inject(:+)
 
   end

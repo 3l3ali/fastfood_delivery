@@ -1,9 +1,3 @@
-<%# @items.each do |item| %>
-   <!-- <%#= link_to item.name, cart_path(item_id: item.id), method: :post %><br> -->
-  <!-- MENU PAGE  -->
-<%# end %>
-
-<%#= link_to "Create Meal", new_user_order_path(current_user), class:"btn btn-primary" %>
 <div class="container">
   <div class="row">
 
@@ -37,28 +31,33 @@
       </ul>
     </div>
 
-    <div class="col-xs-12 col-md-7">
-      <div class="burgers">
+  </div>
 
       <% @items.each do |item| %>
-      <div class="col-md-6">
-        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
-          <div class="card-description">
-              <h3><%= item.name %></h3>
+        <div class="col-xs-12 col-md-7">
+          <div class="burgers">
+
+            <div class="col-md-6">
+              <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
+                <div class="card-description">
+                  <h3><%= item.name %></h3>
+                </div>
+                <div class="card-price">
+
+                  <h2><%= item.price %></h2>
+
+                  <!-- THIS IS THE CART ICON -->
+                  <%= link_to cart_path(item_id: item.id, category: params[:category]), method: :post do %>
+                    <%= image_tag "http://placehold.it/30/30", class: "cart" %>
+                  <% end %>
+
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-price">
-
-            <h2><%= item.price %></h2>
-
-            <%= link_to cart_path(item_id: item.id, category: params[:category]), method: :post do %>
-              <%= image_tag "images/xxxx.jpeg", class: "cart" %>
-            <% end %>
-
-          </div>
-            <% end %>
         </div>
-      </div>
-    </div>
+      <% end %>
+
 
     <div class="col-xs-12 col-md-3">
       <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
@@ -70,16 +69,15 @@
             <% @items_list.each do |item| %>
               <%= item.first %>: <%= item[1][:count] %> <%= link_to "remove", remove_item_path(item_id: item[1][:id], category: params[:category]), method: :post %><br>
             <% end %>
-            <%= link_to new_user_order_path(current_user) , class:"card-link" do %>
-              <%= image_tag "images/xxxx.jpeg", class: "Payment" %>
-            <% end %>
             <%= link_to "Clear cart", clear_cart_path(category: params[:category]), method: :put  %>
-            <h3>Total: </h3> <%= @bill %>
+            <h3>Total: <%= @bill %></h3>
+            <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-danger" %>
           </div>
       </div>
     </div>
-
 </div>
+
+
 
 
 
