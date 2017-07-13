@@ -6,9 +6,13 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users do
+  resources :users, except: [:create, :update] do
     resources :addresses, except: [:show]
     resources :orders
+  end
+
+  namespace :manager do
+    resources :users, only: [:create, :update]
   end
 
   resources :items
