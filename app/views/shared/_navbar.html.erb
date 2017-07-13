@@ -20,7 +20,8 @@
     <!-- Profile picture and dropdown -->
 
     <% if current_user.present? %>
-      <%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Dashboard", dashboard_pages_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.manager? %>
+      <%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" unless current_user.manager? %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag avatar_url(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
@@ -32,11 +33,8 @@
       </div>
     <% else %>
       <%= link_to "Sign in", new_user_session_path ,class: "navbar-wagon-item navbar-wagon-link"%>
-      <%#= link_to "Sign up", new_user_registration_path ,class: "navbar-wagon-item navbar-wagon-link"%>
       <%= link_to "Sign up", new_user_registration_path ,class: "navbar-wagon-item navbar-wagon-button btn" %>
     <% end %>
-
-    <!-- Button (call-to-action) -->
   </div>
 
   <!-- Dropdown appearing on mobile only -->
@@ -51,7 +49,13 @@
             <% end %>
           </li>
           <li><%= link_to "Menu", menu_pages_path  ,class: "navbar-wagon-item navbar-wagon-link" %></li>
-          <li><%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" %></li>
+
+          <li><%= link_to "Dashboard", dashboard_pages_path, class: "navbar-wagon-item navbar-wagon-link" if current_user.manager? %></li>
+
+          <% unless current_user.manager? %>
+            <li><%= link_to "My Orders", user_orders_path(current_user) ,class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <% end %>
+
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Menu", menu_pages_path  ,class: "navbar-wagon-item navbar-wagon-link" %></li>
