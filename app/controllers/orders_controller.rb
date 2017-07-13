@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:index]
+
   def index
     if @user == current_user
       @orders = current_user.orders
