@@ -1,16 +1,11 @@
 body.pages.orders {
 
-  .card
-   {
-    height: 250px;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-    background-size: cover !important;
-    color: white;
-    position: relative;
-    border-radius: 5px;
-    margin:20px;
-    display:flex;
+  .card{
+    overflow-y: scroll; height:400px;
+  }
 
+  h1 {
+    text-align: center;
   }
   // .card-user {
   //   position: absolute;
@@ -25,15 +20,17 @@ body.pages.orders {
   // }
   .card-description {
     display:flex;
-    align-items:center;
+    // align-items:center;
     margin:0 auto;
 
   }
 
   .card-description {
     h2{
-    font-size: 60px;
-    color: white;
+     font-size: 60px;
+     color: white;
+     // position: absolute;
+     // top: 10px;
     }
 
   }
@@ -50,5 +47,19 @@ body.pages.orders {
   .card-link:hover{
     opacity: 0.1;
   }
-}
 
+
+  .orders-table {
+    width: 100%;
+
+  }
+  .orders-table td{
+    padding:10px;
+  }
+  .orders-table tr{
+    padding:10px;
+  }
+  .orders-table th{
+    padding:10px;
+  }
+}
