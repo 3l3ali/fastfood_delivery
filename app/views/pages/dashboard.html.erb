@@ -3,7 +3,7 @@
 
 
         <div class="col-xs-12 col-md-6">
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('../../assets/orders.jpg');">
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('<%= image_url "orders.jpg" %>');">
             <a class="card-link" href=<%= user_orders_path(current_user) %> ></a>
             <div class="card-description">
               <h2>Orders</h2>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="col-xs-12 col-md-6">
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('../../assets/staff.jpeg');">
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('<%= image_url "staff.jpeg" %>');">
             <a class="card-link" href=<%= users_path %> ></a>
             <div class="card-description">
               <h2>Staff</h2>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="col-xs-12 col-md-6">
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('../../assets/meal.jpeg');">
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('<%= image_url "meal.jpeg" %>');">
             <a class="card-link" href=<%= edit_menu_pages_path  %> ></a>
             <div class="card-description">
               <h2>Edit Menu</h2>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-xs-12 col-md-6">
-          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('../../assets/statistics.jpg');">
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('<%= image_url "statistics.jpg" %>');">
             <a class="card-link" href=<%= statistics_pages_path %> ></a>
             <div class="card-description">
               <h2>Statistics</h2>
