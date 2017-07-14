@@ -48,6 +48,11 @@ class PagesController < ApplicationController
 
     @total = Order.where("created_at >= ? AND created_at <= ?", Date.today.to_datetime , Date.tomorrow.to_datetime - 1.second  ).pluck(:bill).inject(&:+).to_i
   end
+
+  def edit_menu
+    redirect_to root_path unless current_user.manager?
+    @items = Item.all
+  end
 end
 
 
