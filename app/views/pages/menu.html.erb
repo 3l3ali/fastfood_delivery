@@ -61,9 +61,16 @@
           <% @items_list.each do |item| %>
             <%= item.first %>: <%= item[1][:count] %> <%= link_to "remove", remove_item_path(item_id: item[1][:id], category: params[:category]), method: :post %><br>
           <% end %>
+
           <%= link_to "Clear cart", clear_cart_path(category: params[:category]), method: :put  %>
+
           <h3>Total: <%= @bill %></h3>
-          <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-danger" %>
+
+          <% if current_user %>
+            <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-danger" %>
+          <% else  %>
+            <%= link_to "Proceed", new_user_session_path, class: "btn btn-danger" %>
+          <% end %>
         </div>
       </div>
     </div>
