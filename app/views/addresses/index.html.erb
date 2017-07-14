@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-6">
+      <%= link_to "Add a new Address !", new_user_address_path(),class: "btn btn-danger"  %>
+    </div>
     <% @addresses.each do |address| %>
       <div class="col-xs-12 col-md-offset-3 col-md-6">
         <%= link_to "#{address.state} , #{address.street}" , edit_user_address_path(current_user, address)  %><hr>
