@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/cart", to: "orders#add_cart"
   post "/remove_item", to: "orders#remove_cart"
   put "/clear_cart", to: "orders#clear_cart"
+  get '/manager/orders', to: "orders#manager_orders"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :users, except: [:create, :update] do

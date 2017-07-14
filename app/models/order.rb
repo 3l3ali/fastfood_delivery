@@ -12,7 +12,8 @@ class Order < ApplicationRecord
   enum status: {
     being_prepared: 0,
     done: 1,
-    out_for_delivery: 2
+    out_for_delivery: 2,
+    delivered: 3
   }
 
   private
