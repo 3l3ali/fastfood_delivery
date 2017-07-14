@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
-
-    <div class="col-xs-12 col-md-2">
-      <ul id="list-home-page">
+    <div class="col-xs-12 col-md-3">
+      <ul id="list-home-page" class="menu-links">
         <li>
           <%= link_to menu_pages_path(category: "burgers"), method: :get do %>
             <%= image_tag "burger.jpg" %>
@@ -30,78 +29,48 @@
         </li>
       </ul>
     </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="items">
+        <% @items.each do |item| %>
+          <div class="col-md-6">
+            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
+              <div class="card-description">
+                <h3><%= item.name %></h3>
+              </div>
+              <div class="card-price">
 
-    <div class="col-xs-12 col-md-7">
-      <div class="burgers">
+                <h2><%= item.price %></h2>
 
-        <div class="col-md-6">
-          <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
-            <div class="card-description">
-              <h3>Cheese Bacen burger</h3>
-            </div>
-            <div class="card-price">
-            <h2>¥650</h2>
-            <img class="cart" src="images/xxxx.jpeg">
-            <a class="card-link" href="#" ></a>
+                <!-- THIS IS THE CART ICON -->
+                <%= link_to cart_path(item_id: item.id, category: params[:category]), method: :post do %>
+                  <%= image_tag "http://placehold.it/30/30", class: "cart" %>
+                <% end %>
+
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
-            <div class="card-description">
-              <h3>Double Cheese Burger</h3>
-            </div>
-            <div class="card-price">
-            <h2>¥650</h2>
-            <img class="cart" src="images/xxxx.jpeg">
-            <a class="card-link" href="#" ></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
-            <div class="card-description">
-              <h3>Chicken Burger</h3>
-            </div>
-            <div class="card-price">
-            <h2>¥650</h2>
-            <img class="cart" src="images/xxxx.jpeg">
-            <a class="card-link" href="#" ></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
-            <div class="card-description">
-              <h3>200g beef burger</h3>
-            </div>
-            <div class="card-price">
-              <h2>¥650</h2>
-              <img class="cart" src="images/xxxx.jpeg">
-              <a class="card-link" href="#" ></a>
-            </div>
-          </div>
-        </div>
-
+        <% end %>
       </div>
     </div>
-
     <div class="col-xs-12 col-md-3">
       <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
-            <div class="card-description">
-              <h3>Ordering List</h3>
-            </div>
-
-            <div class="item_price_list">
-              <img class="Payment" src="images/xxxx.jpeg">
-              <a class="card-link" href="#" ></a>
-            </div>
+        <div class="card-description">
+          <h3>Ordering List</h3>
+        </div>
+        <div class="item_price_list">
+          <% @items_list.each do |item| %>
+            <%= item.first %>: <%= item[1][:count] %> <%= link_to "remove", remove_item_path(item_id: item[1][:id], category: params[:category]), method: :post %><br>
+          <% end %>
+          <%= link_to "Clear cart", clear_cart_path(category: params[:category]), method: :put  %>
+          <h3>Total: <%= @bill %></h3>
+          <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-danger" %>
+        </div>
       </div>
     </div>
-
   </div>
 </div>
+
+
+
+
 

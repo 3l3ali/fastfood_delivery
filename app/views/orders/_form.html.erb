@@ -1,4 +1,5 @@
 <%= simple_form_for [current_user, @order] do |f| %>
+  <%= f.association :address, collection: current_user.addresses, label_method: :street, value_method: :id %>
   <%= f.input :notes %>
   <%= f.submit %>
 <% end %>
