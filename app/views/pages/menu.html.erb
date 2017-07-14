@@ -74,10 +74,10 @@
                 <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-success" %>
               <% else  %>
                 <%= link_to "Proceed", new_user_session_path, class: "btn btn-success" %>
-              <% end %>            
+              <% end %>
             </div>
             <div class="cart-btn2">
-              <%= link_to "Clear Cart", clear_cart_path(category: params[:category]), method: :put, class: "btn btn-danger" unless session[:items_ids].nil?  %>
+              <%= link_to "Clear Cart", clear_cart_path(category: params[:category]), method: :put, class: "btn btn-danger" unless session[:items_ids].nil? || session[:items_ids].empty?  %>
             </div>
           </div>
         </div>
