@@ -1,14 +1,25 @@
 <div class="container">
   <div class="row">
+  <h2 class="text-center">Thank You for Your Order</h2>
+  <p class="text-center">We appreciate your business!</p>
     <div class="col-xs-12 col-md-offset-3 col-md-6">
-      <h4><b>Address : </b></h4><%= "#{@order.address.state}, #{@order.address.city}, #{@order.address.street}, #{@order.address.apartment}" %>
-      <h4><b>Bill : </b></h4><%= "#{@order.bill} YEN" %>
-
+      <div></div>
+      <h4><b>Address : </b></h4>
+        <ol>
+        <li><%= "#{@order.address.state}, #{@order.address.city}, #{@order.address.street}, #{@order.address.apartment}" %>
+        </li>
+        </ol>
       <h4><b>Items :</b></h4>
       <ol>
         <% @order.items.each do |item| %>
-          <li><%= "#{item.name}, #{item.category}, #{item.price}" %></li>
+          <li><%= "#{item.name}" %>&nbsp; ¥<%=item.price %></li>
         <% end %>
+      </ol>
+      <h4><b>Total : </b></h4>
+      <ol>
+        <li>
+          <%= "¥ #{@order.bill}" %>
+        </li>
       </ol>
       <%= link_to "Back", user_orders_path(current_user), class: "btn btn-danger" %>
     </div>
