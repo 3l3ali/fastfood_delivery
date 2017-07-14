@@ -2,36 +2,77 @@
   <div class="row">
 
     <div class="col-xs-12 col-md-6" id="received_orders">
-      <ul>
-        <% @received_orders.each do |order| %>
-          <li><%= "order number #{order.id}" %> <%= link_to " start preparing", prepare_path(order) , method: :patch , class: "btn btn-sm btn-danger" %> </li>
-        <% end %>
-      </ul>
+      <h2>Received Orders</h2>
+        <table class="user-order-status">
+          <% @received_orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to "Order Number #{order.id}", user_order_path(current_user, order) %>
+              </td>
+              <td>
+                <%= link_to " Start preparing", prepare_path(order) , method: :patch , class: "btn btn-sm btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+
     </div>
 
     <div class="col-xs-12 col-md-6" id="being_prepared">
+      <h2>Preparing</h2>
+      <table class="user-order-status">
       <% @being_prepared_orders.each do |order| %>
-        <li><%= "order number #{order.id}" %> <%= link_to " done", done_path(order) , method: :patch , class: "btn btn-sm btn-danger" %> </li>
+        <tr>
+          <td>
+            <%= link_to "Order Number #{order.id}", user_order_path(current_user, order) %>
+          </td>
+          <td>
+          <%= link_to " Done", done_path(order) , method: :patch , class: "btn btn-sm btn-danger" %>
+          </td>
+        </tr>
       <% end %>
+      </table>
     </div>
 
     <div class="col-xs-12 col-md-6" id="done">
+      <h2>Prepared</h2>
+      <table class="user-order-status">
       <% @done_orders.each do |order| %>
-        <li><%= "order number #{order.id}" %> <%= link_to " delivery", out_path(order) , method: :patch , class: "btn btn-sm btn-danger" %> </li>
-      <% end %>
+        <tr>
+          <td><%= link_to "Order Number #{order.id}", user_order_path(current_user, order) %></td>
+          <td><%= link_to " Delivery", out_path(order) , method: :patch , class: "btn btn-sm btn-danger" %> </td>
+        </tr>
+       <% end %>
+      </table>
+
     </div>
 
     <div class="col-xs-12 col-md-6" id="out_for_delivery">
+    <h2>Out for Delivery</h2>
+    <table class="user-order-status">
       <% @out_for_delivery_orders.each do |order| %>
-        <li><%= "order number #{order.id}" %> <%= link_to " delivered", delivered_path(order) , method: :patch , class: "btn btn-sm btn-success" %> </li>
+        <tr>
+          <td><%= link_to "Order Number #{order.id}", user_order_path(current_user, order) %></td>
+          <td><%= link_to " Delivered", delivered_path(order) , method: :patch , class: "btn btn-sm btn-success" %></td>
+        </tr>
       <% end %>
+
+    </table>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12" id="delivered">
+    <h2>Delievered!</h2>
+    <table class="user-order-status">
       <% @delivered_orders.each do |order| %>
-        <li><%= "order number #{order.id}" %></li>
+      <tr>
+        <td>
+        <%= link_to "Order Number #{order.id}", user_order_path(current_user, order) %>
+        </td>
+        <td>COMPLETED</td>
+      </tr>
       <% end %>
+      </table>
     </div>
   </div>
 </div>
