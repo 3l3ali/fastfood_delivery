@@ -62,6 +62,42 @@ class OrdersController < ApplicationController
     redirect_to root_path
   end
 
+  def manager_orders
+    redirect_to root_path unless current_user.manager?
+    @received_orders = Order.where(status: nil)
+    @being_prepared_orders = Order.where(status: 0) || []
+    @done_orders = Order.where(status: 1) || []
+    @out_for_delivery_orders = Order.where(status: 2) || []
+    @delivered_orders = Order.where(status: 3) || []
+  end
+
+  def to_prepare
+    redirect_to root_path unless current_user.manager?
+    order = Order.find(params[:id])
+    order.update(status: 0)
+    redirect_to manager_orders_path
+  end
+
+  def to_done
+    redirect_to root_path unless current_user.manager?
+    order = Order.find(params[:id])
+    order.update(status: 1)
+    redirect_to manager_orders_path
+  end
+
+  def to_out
+    redirect_to root_path unless current_user.manager?
+    order = Order.find(params[:id])
+    order.update(status: 2)
+    redirect_to manager_orders_path
+  end
+
+  def to_delivered
+    redirect_to root_path unless current_user.manager?
+    order = Order.find(params[:id])
+    order.update(status: 3)
+    redirect_to manager_orders_path
+  end
   private
 
   def set_order
