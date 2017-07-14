@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-offset-2 col-md-8">
+    <div class="col-xs-12 col-md-offset-3 col-md-8">
     <h1>Your Orders</h1>
       <table class="user-order-status">
           <tr>
@@ -16,7 +16,7 @@
           </tr>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= order.address.street %></td>
+            <td><%= link_to order.address.street,user_order_path(current_user,order) %></td>
             <td>$<%= order.bill %></td>
             <td><%= order.status %></td>
           </tr>
