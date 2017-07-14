@@ -70,10 +70,14 @@
                     <br />
             <h3>Total: <%= @bill %></h3>
             <div class="cart-btn">
-              <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-success" %>
+              <% if current_user %>
+                <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-success" %>
+              <% else  %>
+                <%= link_to "Proceed", new_user_session_path, class: "btn btn-success" %>
+              <% end %>            
             </div>
             <div class="cart-btn2">
-              <%= link_to "Clear Cart", clear_cart_path(category: params[:category]), method: :put, class: "btn btn-danger"  %>
+              <%= link_to "Clear Cart", clear_cart_path(category: params[:category]), method: :put, class: "btn btn-danger" unless session[:items_ids].nil?  %>
             </div>
           </div>
         </div>

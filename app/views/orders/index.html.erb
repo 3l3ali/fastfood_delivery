@@ -1,5 +1,30 @@
-<% @orders.each do |order| %>
-  <%= order.notes %>
-  <%= order.status %>
-  <%= order.bill %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-6">
+      <table>
+        <th>
+          <tr>
+            <td>
+              <b>Address</b>
+            </td>
+            <td>
+              <b>Bill</b>
+            </td>
+            <td>
+              <b>Status</b>
+            </td>
+          </tr>
+        </th>
+        <tr>
+          <% @orders.each do |order| %>
+            <td><%= order.address.street %></td>
+            <td><%= order.bill %></td>
+            <td><%= order.status %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
