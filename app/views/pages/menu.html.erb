@@ -61,24 +61,26 @@
             <table class="order-list">
               <% @items_list.each do |item| %>
                 <tr>
-                  <td><%= item.first %></td>
                   <td><%= item[1][:count] %></td>
+                  <td><%= item.first %>&nbsp;&nbsp;</td>
                   <td><%= link_to "remove", remove_item_path(item_id: item[1][:id], category: params[:category]), method: :post %></td>
                 </tr>
               <% end %>
             </table>
                     <br />
-            <h3>Total: <%= @bill %></h3>
-            <div class="cart-btn">
-              <% if current_user %>
-                <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-success" %>
-              <% else  %>
-                <%= link_to "Proceed", new_user_session_path, class: "btn btn-success" %>
-              <% end %>
-            </div>
-            <div class="cart-btn2">
-              <%= link_to "Clear Cart", clear_cart_path(category: params[:category]), method: :put, class: "btn btn-danger" unless session[:items_ids].nil? || session[:items_ids].empty?  %>
-            </div>
+            <% unless session[:items_ids].nil? || session[:items_ids].empty? %>
+              <h3>Total: <%= @bill %></h3>
+              <div class="cart-btn">
+                <% if current_user %>
+                  <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-success" %>
+                <% else  %>
+                  <%= link_to "Proceed", new_user_session_path, class: "btn btn-success" %>
+                <% end %>
+              </div>
+              <div class="cart-btn2">
+                <%= link_to "Clear Cart", clear_cart_path(category: params[:category]), method: :put, class: "btn btn-danger"   %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
