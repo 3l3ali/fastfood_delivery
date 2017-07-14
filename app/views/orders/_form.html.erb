@@ -1,3 +1,7 @@
+<h5>
+  Want to add a new address ?
+  <%= link_to " Click here", new_user_address_path(current_user) %>
+</h5>
 <%= simple_form_for [current_user, @order] do |f| %>
   <%= f.association :address, collection: current_user.addresses, label_method: :street, value_method: :id %>
   <%= f.input :notes %>
