@@ -17,13 +17,14 @@ class UsersController < ApplicationController
   end
 
   def new           # GET /users/new
-    redirect_to root_path if !current_user.manager?
+    redirect_to root_path unless current_user.manager?
     @user = User.new
   end
 
 
   def edit          # GET /users/:id/edit
   end
+
 
   def destroy       # DELETE /users/:id
     @user.destroy
