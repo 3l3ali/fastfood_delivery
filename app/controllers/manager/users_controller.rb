@@ -1,5 +1,7 @@
 class Manager::UsersController < ApplicationController
 
+  before_action :set_user, only: :update
+
   # def index         # GET /users
   #   if current_user.manager?
   #     if params[:role].present?
@@ -33,7 +35,7 @@ class Manager::UsersController < ApplicationController
 
   def update        # PATCH /users/:id
     @user.update(user_params)
-    redirect_to root_path
+    redirect_to users_path
   end
 
   # def destroy       # DELETE /users/:id
@@ -47,7 +49,7 @@ class Manager::UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :first_name, :last_name, :phone_number, :role)
   end
 
-  # def set_user
-  #   @user = User.find(params[:id])
-  # end
+  def set_user
+    @user = User.find(params[:id])
+  end
 end
