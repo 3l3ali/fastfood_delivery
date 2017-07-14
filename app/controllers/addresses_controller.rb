@@ -10,38 +10,30 @@ class AddressesController < ApplicationController
     end
   end
 
-  # def show          # GET /address/:id
-  #   @address = @user.addresses.find(params[:id])
-  # end
-
   def new           # GET /address/new
     @address = Address.new
   end
 
   def create        # POST /address
     @address = current_user.addresses.new(address_params)
-    # @address.user = set_user
     if @address.save
-      redirect_to current_user
+      redirect_to new_user_order_path(current_user)
     else
       render 'new'
     end
   end
 
   def edit          # GET /address/:id/edit
-    # @address = current_user.addresses.find(params[:id])
   end
 
   def update        # PATCH /address/:id
-    # @address = current_user.addresses.find(params[:id])
     @address.update(address_params)
-    redirect_to user_addresses_path
+    redirect_to :index
   end
 
   def destroy       # DELETE /address/:id
-    # @address = current_user.addresses.find(params[:id])
     @address.destroy
-    redirect_to user_addresses_path
+    redirect_to :index
   end
 
   private

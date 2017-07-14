@@ -62,7 +62,7 @@
             <%= item.first %>: <%= item[1][:count] %> <%= link_to "remove", remove_item_path(item_id: item[1][:id], category: params[:category]), method: :post %><br>
           <% end %>
 
-          <%= link_to "Clear cart", clear_cart_path(category: params[:category]), method: :put  %>
+          <%= link_to "Clear cart", clear_cart_path(category: params[:category]), method: :put unless session[:items_ids].nil? %>
 
           <h3>Total: <%= @bill %></h3>
 
