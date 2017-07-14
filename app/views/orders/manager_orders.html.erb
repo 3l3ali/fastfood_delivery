@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12 col-md-6" id="received_orders">
+      <ul>
+        <% @received_orders.each do |order| %>
+          <li><%= "order number #{order.id}" %> <%= link_to " start preparing", prepare_path(order) , method: :patch , class: "btn btn-sm btn-danger" %> </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-xs-12 col-md-6" id="being_prepared">
+      <% @being_prepared_orders.each do |order| %>
+        <li><%= "order number #{order.id}" %> <%= link_to " done", done_path(order) , method: :patch , class: "btn btn-sm btn-danger" %> </li>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-md-6" id="done">
+      <% @done_orders.each do |order| %>
+        <li><%= "order number #{order.id}" %> <%= link_to " delivery", out_path(order) , method: :patch , class: "btn btn-sm btn-danger" %> </li>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-md-6" id="out_for_delivery">
+      <% @out_for_delivery_orders.each do |order| %>
+        <li><%= "order number #{order.id}" %> <%= link_to " delivered", delivered_path(order) , method: :patch , class: "btn btn-sm btn-success" %> </li>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" id="delivered">
+      <% @delivered_orders.each do |order| %>
+        <li><%= "order number #{order.id}" %></li>
+      <% end %>
+    </div>
+  </div>
+</div>
