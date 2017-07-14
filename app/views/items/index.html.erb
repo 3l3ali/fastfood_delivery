@@ -1,7 +1,26 @@
-<%= link_to "create a new item", new_item_path %>
-<%= render "form_item" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="items-category">
+          <h2>Items</h2>
+          <%= render "form_item" %>
+        </div>
+        <div class="items-category">
+          <% @items.each do |item| %>
+          <%= link_to item.name, item_path(item) %><br>
+          <% end %>
+          <br>
+        </div>
+        <div class="items-category">
+          <%= link_to "create a new item", new_item_path, class:"btn btn-danger" %>
+          <br>
 
-<% @items.each do |item| %>
-  <%= link_to item.name, item_path(item) %><br>
-<% end %><br>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
 
