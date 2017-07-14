@@ -28,12 +28,12 @@ class AddressesController < ApplicationController
 
   def update        # PATCH /address/:id
     @address.update(address_params)
-    redirect_to :index
+    redirect_to user_addresses_path(current_user)
   end
 
   def destroy       # DELETE /address/:id
     @address.destroy
-    redirect_to :index
+    redirect_to user_addresses_path(current_user)
   end
 
   private
