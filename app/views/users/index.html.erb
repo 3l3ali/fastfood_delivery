@@ -1,35 +1,46 @@
-<% if current_user.manager? %>
-    <%= render 'form_role' %>
-<% end %>
 
-<table border="1" id="userTable" class="user-table">
-  <tr>
-   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->
-    <th onclick="sortTable(0)">First Name</th>
-    <th onclick="sortTable(1)">Last Name</th>
-    <th onclick="sortTable(2)">Role</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= "#{user.first_name}" %></td>
-      <td><%= "#{user.last_name}" %></td>
-      <td><%= "#{user.role}" %></td>
-      <td>
-        <%= link_to edit_user_path(user) do %>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to user_path(user), method: :delete, data: {confirm: "Are you sure?"} do %>
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-6 col-md-offset-3">
+        <h1>Customers & Employees</h1>
+        <div class="manager-filter">
+          <% if current_user.manager? %>
+          <%= render 'form_role' %>
+          <% end %>
+        </div>
+        <table border="1" id="userTable" class="user-table">
+          <tr>
+           <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->
+            <th onclick="sortTable(0)">First Name</th>
+            <th onclick="sortTable(1)">Last Name</th>
+            <th onclick="sortTable(2)">Role</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= "#{user.first_name}" %></td>
+              <td><%= "#{user.last_name}" %></td>
+              <td><%= "#{user.role}" %></td>
+              <td>
+                <%= link_to edit_user_path(user) do %>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to user_path(user), method: :delete, data: {confirm: "Are you sure?"} do %>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
 
-</table>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 function sortTable(n) {
