@@ -1,24 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-offset-3 col-md-6">
-      <table>
-        <th>
+    <div class="col-xs-12 col-md-offset-2 col-md-8">
+    <h1>Your Orders</h1>
+      <table class="user-table">
           <tr>
-            <td>
+            <th>
               <b>Address</b>
-            </td>
-            <td>
+            </th>
+            <th>
               <b>Bill</b>
-            </td>
-            <td>
+            </th>
+            <th>
               <b>Status</b>
-            </td>
+            </th>
           </tr>
-        </th>
         <% @orders.each do |order| %>
           <tr>
             <td><%= order.address.street %></td>
-            <td><%= order.bill %></td>
+            <td>$<%= order.bill %></td>
             <td><%= order.status %></td>
           </tr>
         <% end %>

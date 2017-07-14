@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :pages , only: [] do
     collection do
-      get :home, :menu, :dashboard, :statistics
+      get :home, :menu, :dashboard, :statistics, :edit_menu
     end
   end
 

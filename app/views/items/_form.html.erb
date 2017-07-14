@@ -4,6 +4,8 @@
     <%= f.input :category, collection: Item.categories.keys %>
     <%= f.input :price %>
     <%= f.input :description %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.button :submit %>
   <% end %>
 <% end %>
