@@ -34,11 +34,6 @@
               <%= image_tag "shakes.jpg" %>
             <% end %>
           </div>
-          <div class="col-md-2">
-            <%= link_to "SPECIALS"  do %>
-              <%= image_tag "shakes.jpg" %>
-            <% end %>
-          </div>
         </div>
       </div>
       <div class=" col-xs-12 hidden-md hidden-lg hidden-xl">
@@ -64,25 +59,39 @@
           <% end %>
         </ul>
       </div>
-      <div id="map" style="width: 100%;">
+    </div>
+</div>
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+      <div class="contact hidden-xs hidden-sm col-md-offset-1 col-md-3">
+        <h3>Contact Us</h3>
+        <p>your-food@delivery.com</p><br>
+        <p>(215)-828-2323</p>
       </div>
-        <% content_for(:after_js) do %>
-          <%= javascript_tag do %>
-            $(document).ready(function() {
-              var handler = Gmaps.build('Google');
-              handler.buildMap({ internal: { id: 'map' } }, function() {
-                markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                handler.bounds.extendWith(markers);
-                handler.fitMapToBounds();
-                if (markers.length == 0) {
-                  handler.getMap().setZoom(2);
-                } else if (markers.length == 1) {
-                  handler.getMap().setZoom(14);
-                }
+      <div class="location hidden-xs hidden-sm col-md-3 col-md-offset-3">
+        <h3>Our Locations</h3>
+        <div id="map" style="width: 400px;">
+          <% content_for(:after_js) do %>
+            <%= javascript_tag do %>
+              $(document).ready(function() {
+                var handler = Gmaps.build('Google');
+                handler.buildMap({ internal: { id: 'map' } }, function() {
+                  markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                  handler.bounds.extendWith(markers);
+                  handler.fitMapToBounds();
+                  if (markers.length == 0) {
+                    handler.getMap().setZoom(2);
+                  } else if (markers.length == 1) {
+                    handler.getMap().setZoom(14);
+                  }
+                });
               });
-            });
+            <% end %>
           <% end %>
-        <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
