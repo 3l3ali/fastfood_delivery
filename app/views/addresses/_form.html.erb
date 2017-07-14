@@ -1,9 +1,9 @@
 <%= simple_form_for [current_user,@address] do |f|%>
-  <%= f.input :state %>
-  <%= f.input :city %>
   <%= f.input :street %>
   <%= f.input :building %>
   <%= f.input :apartment %>
+  <%= f.input :city %>
+  <%= f.input :state %>
   <%= f.input :zipcode %>
-  <%= f.submit %>
+  <%= f.submit class:"btn btn-success"%>
 <% end %>
