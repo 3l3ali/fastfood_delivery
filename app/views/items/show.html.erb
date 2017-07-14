@@ -1,5 +1,5 @@
 <%#= cl_image_tag @item.photo, height: 300, width: 400, crop: :fill %>
-<%= image_tag @item.photo.url(:standard) %>
+<%= image_tag @item.photo.url(:standard) if @item.photo.present? %>
 <%= @item.description %><br>
 
 <%= link_to "Delete", item_path(@item), method: :delete %><br>
