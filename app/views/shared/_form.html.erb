@@ -1,9 +1,0 @@
-<%= simple_form_for user, url: manager_user_path(user) do |f|%>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :password if current_user.id == user.id %>
-  <%= f.input :phone_number %>
-  <%= f.input :role, collection: User.roles.keys if current_user.manager? %>
-  <%= f.submit %>
-<% end %>
