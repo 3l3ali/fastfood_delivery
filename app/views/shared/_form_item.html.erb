@@ -1,0 +1,5 @@
+<%= form_tag items_path, method: :get do %>
+  <%= select_tag :category, options_for_select(Item.items_for_select, params[:category]) %>
+  <%= submit_tag "search" %>
+<% end %>
+
