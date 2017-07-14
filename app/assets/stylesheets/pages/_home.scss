@@ -35,12 +35,25 @@
 
 
 #map {
-  top: 20px;
-  left:0px;
-  height:400px;
+
+  height:200px;
 
 }
-
+.contact{
+  float:left;
+  color:#fff;
+}
+.locations {
+  float:right;
+}
 .container-body{
   background-color: #77000D;
+}
+#footer h3{
+  color:#fff;
+}
+#footer {
+  background: #000;
+  margin-top:100px;
+  padding-bottom: 40px;
 }

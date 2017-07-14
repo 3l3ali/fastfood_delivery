@@ -29,7 +29,7 @@
               <div class="col-md-6">
                 <div class="item-card">
                   <div class="item-image">
-                    <%= image_tag "http://placehold.it/300/100", class: "cart" %>
+                    <%= image_tag item.photo, class: "cart" %>
                   </div>
                   <div class="item-name">
                     <h4><%= item.name %></h4>
@@ -69,7 +69,7 @@
             </table>
                     <br />
             <% unless session[:items_ids].nil? || session[:items_ids].empty? %>
-              <h3>Total: <%= @bill %></h3>
+              <h3>Total: $<%= @bill %></h3>
               <div class="cart-btn">
                 <% if current_user %>
                   <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-success" %>

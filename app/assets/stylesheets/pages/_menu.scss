@@ -3,7 +3,7 @@ li{
 }
 .menu-container{
   background:#77000D;
-  height: 100vh;
+  height: 100%;
 
 }
 .menu-box{
@@ -43,8 +43,7 @@ li{
 
 }
 .item-card{
-  border:1px;
-  border-style: solid;
+  border-radius:5px;
   background: #fff;
   height:300px;
   margin-bottom:20px;
@@ -73,6 +72,8 @@ li{
   width:100%;
   margin-top:20px;
   color:#fff;
+  border-radius:5px;
+  padding:5px;
 
 }
 .order-price-list{
