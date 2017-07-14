@@ -1,82 +1,90 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-3">
-      <ul id="list-home-page" class="menu-links">
-        <li>
-          <%= link_to menu_pages_path(category: "burgers"), method: :get do %>
-            <%= image_tag "burger.jpg" %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to menu_pages_path(category: "chicken_sandwiches") do %>
-            <%= image_tag "chicken.jpg" %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to menu_pages_path(category: "sides") do %>
-            <%= image_tag "sides.jpg" %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to menu_pages_path(category: "drinks") do %>
-            <%= image_tag "drinks.jpg" %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to menu_pages_path(category: "shakes") do %>
-            <%= image_tag "shakes.jpg" %>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-    <div class="col-xs-12 col-md-6">
-      <div class="items">
-        <% @items.each do |item| %>
-          <div class="col-md-6">
-            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
-              <div class="card-description">
-                <h3><%= item.name %></h3>
+<div class="menu-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-2">
+        <div class="menu-box">
+          <ul id="list-home-page" class="menu-links">
+            <li>
+              <%= link_to "Burgers", menu_pages_path(category: "burgers"), class:"category-links" %>
+            </li>
+            <li>
+              <%= link_to "Chickens", menu_pages_path(category: "chicken_sandwiches"), class:"category-links" %>
+            </li>
+            <li>
+              <%= link_to "Sides", menu_pages_path(category: "sides"), class:"category-links" %>
+            </li>
+            <li>
+              <%= link_to "Drink", menu_pages_path(category: "drinks"), class:"category-links" %>
+            </li>
+            <li>
+              <%= link_to "Shakes", menu_pages_path(category: "shakes"), class:"category-links" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-7">
+        <div class="item-section">
+          <div class="item">
+            <% @items.each do |item| %>
+              <div class="col-md-6">
+                <div class="item-card">
+                  <div class="item-image">
+                    <%= image_tag "http://placehold.it/300/100", class: "cart" %>
+                  </div>
+                  <div class="item-name">
+                    <h4><%= item.name %></h4>
+                  </div>
+                  <div class="item-price">
+
+                    <h4 class="text-center">$<%= item.price %></h4>
+
+                    <!-- THIS IS THE CART ICON -->
+                    <div class="cart-item">
+                      <%= link_to cart_path(item_id: item.id, category: params[:category]), method: :post do %>
+                        <%= image_tag "cart.png"%>
+                      <% end %>
+                    </div>
+
+                  </div>
+                </div>
               </div>
-              <div class="card-price">
-
-                <h2><%= item.price %></h2>
-
-                <!-- THIS IS THE CART ICON -->
-                <%= link_to cart_path(item_id: item.id, category: params[:category]), method: :post do %>
-                  <%= image_tag "http://placehold.it/30/30", class: "cart" %>
-                <% end %>
-
-              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="order"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
+          <div class="order-description">
+            <h3>Ordering List</h3>
+          </div>
+          <div class="order-price-list">
+            <table class="order-list">
+              <% @items_list.each do |item| %>
+                <tr>
+                  <td><%= item.first %></td>
+                  <td><%= item[1][:count] %></td>
+                  <td><%= link_to "remove", remove_item_path(item_id: item[1][:id], category: params[:category]), method: :post %></td>
+                </tr>
+              <% end %>
+            </table>
+                    <br />
+            <h3>Total: <%= @bill %></h3>
+            <div class="cart-btn">
+              <% if current_user %>
+                <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-success" %>
+              <% else  %>
+                <%= link_to "Proceed", new_user_session_path, class: "btn btn-success" %>
+              <% end %>            
+            </div>
+            <div class="cart-btn2">
+              <%= link_to "Clear Cart", clear_cart_path(category: params[:category]), method: :put, class: "btn btn-danger" unless session[:items_ids].nil?  %>
             </div>
           </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <div class="card"style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/xxxxxx.jpeg');">
-        <div class="card-description">
-          <h3>Ordering List</h3>
-        </div>
-        <div class="item_price_list">
-          <% @items_list.each do |item| %>
-            <%= item.first %>: <%= item[1][:count] %> <%= link_to "remove", remove_item_path(item_id: item[1][:id], category: params[:category]), method: :post %><br>
-          <% end %>
-
-          <%= link_to "Clear cart", clear_cart_path(category: params[:category]), method: :put unless session[:items_ids].nil? %>
-
-          <h3>Total: <%= @bill %></h3>
-
-          <% if current_user %>
-            <%= link_to "Proceed", new_user_order_path(current_user), class: "btn btn-danger" %>
-          <% else  %>
-            <%= link_to "Proceed", new_user_session_path, class: "btn btn-danger" %>
-          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 
 
